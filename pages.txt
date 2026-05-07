@@ -16,6 +16,8 @@ disney      = https://flixpatrol.com/top10/disney/netherlands/
 hbo         = https://flixpatrol.com/top10/hbo-max/netherlands/
 prime-video = https://flixpatrol.com/top10/amazon-prime/netherlands/
 apple-tv    = https://flixpatrol.com/top10/apple-tv/netherlands/
+videoland   = https://flixpatrol.com/top10/videoland/netherlands/
+skyshowtime = https://flixpatrol.com/top10/skyshowtime/netherlands/
 
 # Want a second country? Just add more lines, e.g.:
 # netflix-be  = https://flixpatrol.com/top10/netflix/belgium/
