@@ -15,12 +15,15 @@
 # add/remove items so the mdblist list contains exactly the IMDb IDs from
 # the local file. Lines below are examples — uncomment and edit.
 
-# netflix-all      12345
-# disney-all       12346
-# hbo-all          12347
-# prime-video-all  12348
-apple-tv-tv-titles matthias.bentein/apple-tv-top-10
+# With SECTIONS_ENABLED = {"TOP 10 TV Shows"} in scraper.py, only the
+# <platform>-tv.txt files exist. Map them like this:
+# netflix-tv      matthias.bentein/netflix-top-10
+# disney-tv       matthias.bentein/disney-top-10
+# hbo-tv          matthias.bentein/hbo-top-10
+# prime-video-tv  matthias.bentein/prime-top-10
+# apple-tv-tv     matthias.bentein/apple-tv-top-10
+# videoland-tv    matthias.bentein/videoland-top-10
 
-# Per-section examples (use these if you want movies and TV separated):
-# netflix-movies   12350
-# netflix-tv       12351
+# If you re-enable more sections in scraper.py, you can also map:
+# <platform>-movies, <platform>-kids-movies, <platform>-kids-tv,
+# <platform>-all (movies + tv combined, no kids).

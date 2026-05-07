@@ -46,6 +46,11 @@ SECTIONS: dict[str, tuple[str, str]] = {
     "TOP 10 Kids TV Shows": ("kids-tv",    "tv"),
 }
 
+# Limit to a subset of the sections above.
+# Set to `None` to scrape all four sections.
+# Set to e.g. {"TOP 10 TV Shows"} to scrape only adult TV series.
+SECTIONS_ENABLED: set[str] | None = {"TOP 10 TV Shows"}
+
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -78,8 +83,20 @@ flix_session.headers.update({
 })
 
 # TMDb is a normal API, so plain requests is fine (and faster).
+# Accept either v3 API key (32-char hex) or v4 Read Access Token (JWT, starts
+# with "eyJ"). The Bearer header path is used for the JWT.
+TMDB_USE_BEARER = TMDB_API_KEY.startswith("eyJ")
 tmdb_session = requests.Session()
-tmdb_session.headers.update({"User-Agent": USER_AGENT})
+tmdb_session.headers.update({"User-Agent": USER_AGENT, "Accept": "application/json"})
+if TMDB_USE_BEARER:
+    tmdb_session.headers["Authorization"] = f"Bearer {TMDB_API_KEY}"
+
+
+def _tmdb_get(path: str, params: dict | None = None):
+    p = dict(params or {})
+    if not TMDB_USE_BEARER and TMDB_API_KEY:
+        p["api_key"] = TMDB_API_KEY
+    return tmdb_session.get(f"{TMDB_BASE}{path}", params=p, timeout=HTTP_TIMEOUT)
 
 
 def http_get(url: str, *, params: dict | None = None) -> Optional[str]:
@@ -164,19 +181,19 @@ def tmdb_imdb_id(title: str, year: Optional[int], media_type: str) -> Optional[s
         return None
 
     is_movie = media_type == "movie"
-    search_url = f"{TMDB_BASE}/search/{'movie' if is_movie else 'tv'}"
-    params = {"api_key": TMDB_API_KEY, "query": title, "include_adult": "false"}
+    search_path = f"/search/{'movie' if is_movie else 'tv'}"
+    params = {"query": title, "include_adult": "false"}
     if year:
         params["year" if is_movie else "first_air_date_year"] = year
 
     try:
-        r = tmdb_session.get(search_url, params=params, timeout=HTTP_TIMEOUT)
+        r = _tmdb_get(search_path, params)
         r.raise_for_status()
         results = r.json().get("results", [])
         if not results and year:
             # Retry without year in case FlixPatrol's date is off
             params.pop("year" if is_movie else "first_air_date_year", None)
-            r = tmdb_session.get(search_url, params=params, timeout=HTTP_TIMEOUT)
+            r = _tmdb_get(search_path, params)
             r.raise_for_status()
             results = r.json().get("results", [])
         if not results:
@@ -184,18 +201,10 @@ def tmdb_imdb_id(title: str, year: Optional[int], media_type: str) -> Optional[s
 
         tmdb_id = results[0]["id"]
         if is_movie:
-            details = tmdb_session.get(
-                f"{TMDB_BASE}/movie/{tmdb_id}",
-                params={"api_key": TMDB_API_KEY},
-                timeout=HTTP_TIMEOUT,
-            ).json()
+            details = _tmdb_get(f"/movie/{tmdb_id}").json()
             return details.get("imdb_id") or None
         else:
-            ext = tmdb_session.get(
-                f"{TMDB_BASE}/tv/{tmdb_id}/external_ids",
-                params={"api_key": TMDB_API_KEY},
-                timeout=HTTP_TIMEOUT,
-            ).json()
+            ext = _tmdb_get(f"/tv/{tmdb_id}/external_ids").json()
             return ext.get("imdb_id") or None
     except (requests.RequestException, ValueError, KeyError) as exc:
         print(f"    TMDb lookup error for {title!r}: {exc}", file=sys.stderr)
@@ -311,6 +320,8 @@ def main() -> int:
         all_titles: list[str] = []
 
         for section_label, (suffix, default_type) in SECTIONS.items():
+            if SECTIONS_ENABLED is not None and section_label not in SECTIONS_ENABLED:
+                continue
             items = sections.get(section_label, [])
             if not items:
                 continue
@@ -321,18 +332,31 @@ def main() -> int:
             for slug, display_title in items:
                 entry = cache.get(slug)
 
-                # Step 1: resolve year + media_type if not yet cached
-                if not entry or "type" not in entry:
+                # Step 1: resolve year if not yet cached. Type ALWAYS comes from
+                # the FlixPatrol section, because their JSON-LD marks everything
+                # as "Movie" — including TV series — which makes JSON-LD's
+                # @type useless for our purposes.
+                if not entry or "year" not in entry:
                     print(f"  fetch title page: {display_title}  ({slug})")
                     title_html = http_get(f"https://flixpatrol.com/title/{slug}/")
                     time.sleep(REQUEST_DELAY_SECONDS)
-                    year, media_type = parse_title_page(title_html or "")
+                    year, _ = parse_title_page(title_html or "")
                     entry = entry or {}
                     entry.update({
                         "title": display_title,
                         "year":  year,
-                        "type":  media_type or default_type,
+                        "type":  default_type,
                     })
+                    cache[slug] = entry
+                    save_cache(cache)
+
+                # Self-heal: cache made before the type-from-section fix may
+                # have the wrong type. If the cached type doesn't match the
+                # section, override it and clear imdb_id to force a re-lookup.
+                if entry.get("type") != default_type:
+                    print(f"  type fix: {slug}: {entry.get('type')!r} -> {default_type!r}")
+                    entry["type"] = default_type
+                    entry.pop("imdb_id", None)
                     cache[slug] = entry
                     save_cache(cache)
 
