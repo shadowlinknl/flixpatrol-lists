@@ -130,6 +130,12 @@
     "type": "tv",
     "year": 2025
   },
+  "de-bachelorette": {
+    "imdb_id": "tt12373660",
+    "title": "De Bachelorette",
+    "type": "tv",
+    "year": 2020
+  },
   "despicable-me-3": {
     "imdb_id": "tt3469046",
     "title": "Despicable Me 3",
@@ -220,9 +226,9 @@
     "year": 2021
   },
   "gary-2026": {
-    "imdb_id": "tt42373968",
+    "imdb_id": "tt39367461",
     "title": "Gary",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "georgie-mandys-first-marriage": {
@@ -236,6 +242,12 @@
     "title": "Gladiator II",
     "type": "movie",
     "year": 2024
+  },
+  "goede-tijden-slechte-tijden": {
+    "imdb_id": "tt0096597",
+    "title": "Goede Tijden, Slechte Tijden",
+    "type": "tv",
+    "year": 1990
   },
   "gold-rush": {
     "imdb_id": "tt1800864",
@@ -278,6 +290,12 @@
     "title": "Hercules",
     "type": "movie",
     "year": 2014
+  },
+  "het-jachtseizoen-most-wanted": {
+    "imdb_id": "tt33788627",
+    "title": "Het Jachtseizoen: Most Wanted",
+    "type": "tv",
+    "year": 2024
   },
   "high-potential": {
     "imdb_id": "tt22091076",
@@ -345,11 +363,21 @@
     "type": "movie",
     "year": 2026
   },
+  "kees-van-der-spek-ontmaskert": {
+    "title": "Kees van der Spek Ontmaskert",
+    "type": "tv",
+    "year": 2019
+  },
   "killers-of-the-flower-moon": {
     "imdb_id": "tt5537002",
     "title": "Killers of the Flower Moon",
     "type": "movie",
     "year": 2023
+  },
+  "kopen-zonder-kijken": {
+    "title": "Kopen Zonder Kijken",
+    "type": "tv",
+    "year": 2017
   },
   "lost-transport": {
     "imdb_id": "tt14852188",
@@ -386,6 +414,18 @@
     "title": "Margo's Got Money Troubles",
     "type": "tv",
     "year": 2026
+  },
+  "married-at-first-sight": {
+    "imdb_id": "tt4771108",
+    "title": "Married at First Sight",
+    "type": "tv",
+    "year": 2015
+  },
+  "married-at-first-sight-2016": {
+    "imdb_id": "tt15254812",
+    "title": "Married at First Sight",
+    "type": "tv",
+    "year": 2016
   },
   "masha-and-the-bear": {
     "title": "Masha and the Bear",
@@ -468,9 +508,8 @@
     "year": 2007
   },
   "pirates-of-the-caribbean-dead-mans-chest": {
-    "imdb_id": "tt0383574",
     "title": "Pirates of the Caribbean: Dead Man's Chest",
-    "type": "movie",
+    "type": "tv",
     "year": 2006
   },
   "queer": {
@@ -502,6 +541,12 @@
     "title": "Salish & Jordan Matter",
     "type": "tv",
     "year": 2026
+  },
+  "schiphol-airport": {
+    "imdb_id": "tt37518291",
+    "title": "Schiphol Airport",
+    "type": "tv",
+    "year": 2024
   },
   "school-spirits-2023": {
     "imdb_id": "tt21057450",
@@ -593,6 +638,12 @@
     "type": "tv",
     "year": null
   },
+  "the-bold-and-the-beautiful": {
+    "imdb_id": "tt0092325",
+    "title": "The Bold and the Beautiful",
+    "type": "tv",
+    "year": 1987
+  },
   "the-boys-2019": {
     "imdb_id": "tt1190634",
     "title": "The Boys",
@@ -612,9 +663,8 @@
     "year": 2026
   },
   "the-devil-wears-prada": {
-    "imdb_id": "tt0458352",
     "title": "The Devil Wears Prada",
-    "type": "movie",
+    "type": "tv",
     "year": 2006
   },
   "the-dictator": {
@@ -680,6 +730,12 @@
   "the-pitt": {
     "imdb_id": "tt31938062",
     "title": "The Pitt",
+    "type": "tv",
+    "year": 2025
+  },
+  "the-real-housewives-van-het-zuiden": {
+    "imdb_id": "tt31531564",
+    "title": "The Real Housewives van het Zuiden",
     "type": "tv",
     "year": 2025
   },
