@@ -114,21 +114,59 @@ def split_by_type(imdb_ids: Iterable[str], type_index: dict[str, str]) -> dict[s
 
 # --- mdblist API helpers ---------------------------------------------------
 
-def _ref_path(list_ref: str) -> str:
-    """`/lists/{listid}` or `/lists/{user}/{slug}` — both forms work in the API."""
-    return f"/lists/{list_ref}"
+# username/slug -> numeric id, populated lazily.
+_id_cache: dict[str, str] = {}
 
 
-def get_existing_imdb_ids(list_ref: str) -> Optional[set[str]]:
-    """Fetch all IMDb IDs currently in the mdblist list."""
-    url = f"{MDBLIST_BASE}{_ref_path(list_ref)}/items"
+def resolve_list_id(list_ref: str) -> Optional[str]:
+    """
+    Translate `username/slug` to the numeric mdblist list ID.
+    Numeric refs are returned unchanged.
+
+    The Modify Static List Items endpoint (`POST /lists/{id}/items/{action}`)
+    only accepts the numeric ID, so we resolve once and reuse.
+    """
+    if list_ref.isdigit():
+        return list_ref
+    if list_ref in _id_cache:
+        return _id_cache[list_ref]
+
+    url = f"{MDBLIST_BASE}/lists/{list_ref}"
+    try:
+        r = session.get(url, params={"apikey": MDBLIST_API_KEY}, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        data = r.json()
+    except (requests.RequestException, ValueError) as exc:
+        print(f"    ERROR resolving list {list_ref}: {exc}", file=sys.stderr)
+        return None
+
+    # The API has historically returned this as a single dict OR a
+    # 1-element list. Handle both.
+    candidate = None
+    if isinstance(data, dict):
+        candidate = data
+    elif isinstance(data, list) and data:
+        candidate = data[0]
+    if isinstance(candidate, dict) and candidate.get("id"):
+        list_id = str(candidate["id"])
+        _id_cache[list_ref] = list_id
+        return list_id
+
+    print(f"    ERROR: could not find numeric ID in response for {list_ref}: "
+          f"{str(data)[:200]}", file=sys.stderr)
+    return None
+
+
+def get_existing_imdb_ids(list_id: str) -> Optional[set[str]]:
+    """Fetch all IMDb IDs currently in the mdblist list (numeric ID only)."""
+    url = f"{MDBLIST_BASE}/lists/{list_id}/items"
     try:
         r = session.get(url, params={"apikey": MDBLIST_API_KEY, "limit": 1000},
                         timeout=HTTP_TIMEOUT)
         r.raise_for_status()
         data = r.json()
     except (requests.RequestException, ValueError) as exc:
-        print(f"    ERROR reading mdblist list {list_ref}: {exc}", file=sys.stderr)
+        print(f"    ERROR reading mdblist list {list_id}: {exc}", file=sys.stderr)
         return None
 
     ids: set[str] = set()
@@ -146,11 +184,11 @@ def get_existing_imdb_ids(list_ref: str) -> Optional[set[str]]:
     return ids
 
 
-def modify_items(list_ref: str, action: str, payload: dict) -> Optional[dict]:
-    """POST /lists/{ref}/items/{action} where action is 'add' or 'remove'."""
+def modify_items(list_id: str, action: str, payload: dict) -> Optional[dict]:
+    """POST /lists/{listid}/items/{action} where action is 'add' or 'remove'."""
     if not (payload.get("movies") or payload.get("shows")):
         return {"skipped": True}
-    url = f"{MDBLIST_BASE}{_ref_path(list_ref)}/items/{action}"
+    url = f"{MDBLIST_BASE}/lists/{list_id}/items/{action}"
     try:
         r = session.post(
             url,
@@ -161,7 +199,7 @@ def modify_items(list_ref: str, action: str, payload: dict) -> Optional[dict]:
         r.raise_for_status()
         return r.json()
     except (requests.RequestException, ValueError) as exc:
-        print(f"    ERROR {action} on {list_ref}: {exc}", file=sys.stderr)
+        print(f"    ERROR {action} on list {list_id}: {exc}", file=sys.stderr)
         return None
 
 
@@ -183,7 +221,11 @@ def sync_one(local_name: str, list_ref: str, type_index: dict[str, str]) -> bool
         print(f"  SKIP {local_name}: lists/{local_name}.txt has no IMDb IDs", file=sys.stderr)
         return False
 
-    existing_ids = get_existing_imdb_ids(list_ref)
+    list_id = resolve_list_id(list_ref)
+    if not list_id:
+        return False
+
+    existing_ids = get_existing_imdb_ids(list_id)
     if existing_ids is None:
         return False
 
@@ -191,23 +233,22 @@ def sync_one(local_name: str, list_ref: str, type_index: dict[str, str]) -> bool
     to_add = sorted(desired_ids - existing_ids)
     unchanged = len(existing_ids & desired_ids)
 
-    print(f"  {local_name} -> {list_ref}: "
+    label = list_ref if list_ref == list_id else f"{list_ref} (#{list_id})"
+    print(f"  {local_name} -> {label}: "
           f"{unchanged} unchanged, +{len(to_add)} to add, -{len(to_remove)} to remove")
 
     success = True
 
     if to_remove:
         payload = split_by_type(to_remove, type_index)
-        result = modify_items(list_ref, "remove", payload)
+        result = modify_items(list_id, "remove", payload)
         if result is None:
             success = False
-        elif "removed" in result or "deleted" in result:
-            pass  # keep silent on success
         time.sleep(REQUEST_DELAY)
 
     if to_add:
         payload = split_by_type(to_add, type_index)
-        result = modify_items(list_ref, "add", payload)
+        result = modify_items(list_id, "add", payload)
         if result is None:
             success = False
         else:
