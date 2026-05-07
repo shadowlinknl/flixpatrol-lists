@@ -19,7 +19,7 @@
 # disney-all       12346
 # hbo-all          12347
 # prime-video-all  12348
-# apple-tv-all     12349
+apple-tv-tv-titles matthias.bentein/apple-tv-top-10
 
 # Per-section examples (use these if you want movies and TV separated):
 # netflix-movies   12350
