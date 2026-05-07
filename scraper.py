@@ -28,6 +28,7 @@ import time
 from pathlib import Path
 from typing import Optional
 
+import cloudscraper
 import requests
 
 
@@ -65,20 +66,28 @@ TMDB_BASE = "https://api.themoviedb.org/3"
 
 # --- HTTP helpers ----------------------------------------------------------
 
-session = requests.Session()
-session.headers.update({
-    "User-Agent":      USER_AGENT,
-    "Accept-Language": "en-US,en;q=0.9",
+# FlixPatrol sits behind Cloudflare and 403s plain `requests` traffic from cloud
+# IPs (incl. GitHub Actions runners). cloudscraper emulates a browser closely
+# enough to pass Cloudflare's JS challenge in most cases.
+flix_session = cloudscraper.create_scraper(
+    browser={"browser": "chrome", "platform": "darwin", "desktop": True}
+)
+flix_session.headers.update({
+    "Accept-Language": "en-US,en;q=0.9,nl;q=0.8",
     "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 })
 
+# TMDb is a normal API, so plain requests is fine (and faster).
+tmdb_session = requests.Session()
+tmdb_session.headers.update({"User-Agent": USER_AGENT})
+
 
 def http_get(url: str, *, params: dict | None = None) -> Optional[str]:
-    """GET with simple retry/backoff. Returns response text or None."""
+    """GET FlixPatrol with simple retry/backoff. Returns response text or None."""
     backoff = 2
     for attempt in range(1, MAX_HTTP_RETRIES + 1):
         try:
-            r = session.get(url, params=params, timeout=HTTP_TIMEOUT)
+            r = flix_session.get(url, params=params, timeout=HTTP_TIMEOUT)
             if r.status_code == 200:
                 return r.text
             print(f"    HTTP {r.status_code} ({attempt}/{MAX_HTTP_RETRIES}) for {url}",
@@ -161,13 +170,13 @@ def tmdb_imdb_id(title: str, year: Optional[int], media_type: str) -> Optional[s
         params["year" if is_movie else "first_air_date_year"] = year
 
     try:
-        r = session.get(search_url, params=params, timeout=HTTP_TIMEOUT)
+        r = tmdb_session.get(search_url, params=params, timeout=HTTP_TIMEOUT)
         r.raise_for_status()
         results = r.json().get("results", [])
         if not results and year:
             # Retry without year in case FlixPatrol's date is off
             params.pop("year" if is_movie else "first_air_date_year", None)
-            r = session.get(search_url, params=params, timeout=HTTP_TIMEOUT)
+            r = tmdb_session.get(search_url, params=params, timeout=HTTP_TIMEOUT)
             r.raise_for_status()
             results = r.json().get("results", [])
         if not results:
@@ -175,14 +184,14 @@ def tmdb_imdb_id(title: str, year: Optional[int], media_type: str) -> Optional[s
 
         tmdb_id = results[0]["id"]
         if is_movie:
-            details = session.get(
+            details = tmdb_session.get(
                 f"{TMDB_BASE}/movie/{tmdb_id}",
                 params={"api_key": TMDB_API_KEY},
                 timeout=HTTP_TIMEOUT,
             ).json()
             return details.get("imdb_id") or None
         else:
-            ext = session.get(
+            ext = tmdb_session.get(
                 f"{TMDB_BASE}/tv/{tmdb_id}/external_ids",
                 params={"api_key": TMDB_API_KEY},
                 timeout=HTTP_TIMEOUT,

@@ -1,1 +1,2 @@
 requests>=2.31,<3
+cloudscraper>=1.2.71,<2

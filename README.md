@@ -167,4 +167,3 @@ Without `TMDB_API_KEY` the scraper still produces the `*-titles.txt` files
   search result is used. For very generic titles you may occasionally get a
   wrong match — the easiest fix is to override that slug’s entry in
   `cache.json`.
-# flixpatrol-lists
