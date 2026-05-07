@@ -1,22 +1,26 @@
 {
   "9-1-1-nashville": {
+    "imdb_id": "tt33550053",
     "title": "9-1-1: Nashville",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "90-day-fiance-before-the-90-days-2017": {
+    "imdb_id": "tt7252812",
     "title": "90 Day Fiancé: Before the 90 Days",
-    "type": "movie",
+    "type": "tv",
     "year": 2017
   },
   "90-day-the-single-life": {
+    "imdb_id": "tt13990474",
     "title": "90 Day: The Single Life",
-    "type": "movie",
+    "type": "tv",
     "year": 2021
   },
   "amsterdam-centraal-247-2025": {
+    "imdb_id": "tt36873634",
     "title": "Amsterdam Centraal 24/7",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "amsterdamned-ii": {
@@ -74,9 +78,9 @@
     "year": 2014
   },
   "brooklyn-nine-nine": {
-    "imdb_id": "tt22267706",
+    "imdb_id": "tt2467372",
     "title": "Brooklyn Nine-Nine",
-    "type": "movie",
+    "type": "tv",
     "year": 2013
   },
   "buen-camino": {
@@ -86,14 +90,15 @@
     "year": 2025
   },
   "chernobyl-inside-the-meltdown": {
+    "imdb_id": "tt41908821",
     "title": "Chernobyl: Inside The Meltdown",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "citadel-2023": {
-    "imdb_id": "tt1641975",
+    "imdb_id": "tt9794044",
     "title": "Citadel",
-    "type": "movie",
+    "type": "tv",
     "year": 2023
   },
   "cocomelon-lane": {
@@ -114,13 +119,15 @@
     "year": 2026
   },
   "criminal-record": {
+    "imdb_id": "tt21088136",
     "title": "Criminal Record",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "daredevil-born-again": {
+    "imdb_id": "tt18923754",
     "title": "Daredevil: Born Again",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "despicable-me-3": {
@@ -136,8 +143,9 @@
     "year": 2024
   },
   "dood-spoor": {
+    "imdb_id": "tt24242884",
     "title": "Dood Spoor",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "downton-abbey-the-grand-finale": {
@@ -154,7 +162,7 @@
   },
   "echte-reizigersvrouwen": {
     "title": "Echte Reizigersvrouwen",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "eddington": {
@@ -164,9 +172,9 @@
     "year": 2025
   },
   "euphoria": {
-    "imdb_id": "tt5698320",
+    "imdb_id": "tt8772296",
     "title": "Euphoria",
-    "type": "movie",
+    "type": "tv",
     "year": 2019
   },
   "f1": {
@@ -176,14 +184,15 @@
     "year": 2025
   },
   "fallout": {
-    "imdb_id": "tt29495090",
+    "imdb_id": "tt12637874",
     "title": "Fallout",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "fbi-most-wanted": {
+    "imdb_id": "tt9742936",
     "title": "FBI: Most Wanted",
-    "type": "movie",
+    "type": "tv",
     "year": 2020
   },
   "finch": {
@@ -193,14 +202,15 @@
     "year": 2021
   },
   "for-all-mankind-2019": {
-    "imdb_id": "tt0097372",
+    "imdb_id": "tt7772588",
     "title": "For All Mankind",
-    "type": "movie",
+    "type": "tv",
     "year": 2019
   },
   "funny-af-with-kevin-hart": {
+    "imdb_id": "tt39385315",
     "title": "Funny AF with Kevin Hart",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "gabbys-dollhouse": {
@@ -216,8 +226,9 @@
     "year": 2026
   },
   "georgie-mandys-first-marriage": {
+    "imdb_id": "tt31589662",
     "title": "Georgie & Mandy's First Marriage",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "gladiator-ii": {
@@ -227,14 +238,15 @@
     "year": 2024
   },
   "gold-rush": {
-    "imdb_id": "tt0015864",
+    "imdb_id": "tt1800864",
     "title": "Gold Rush",
-    "type": "movie",
+    "type": "tv",
     "year": 2011
   },
   "gomorrah-the-origins": {
+    "imdb_id": "tt38876090",
     "title": "Gomorrah: The Origins",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "greyhound": {
@@ -250,14 +262,15 @@
     "year": 2017
   },
   "hacks": {
-    "imdb_id": "tt2119532",
+    "imdb_id": "tt11815682",
     "title": "Hacks",
-    "type": "movie",
+    "type": "tv",
     "year": 2021
   },
   "heels-in-the-hay": {
+    "imdb_id": "tt36220598",
     "title": "Heels in the Hay",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "hercules-2014": {
@@ -267,14 +280,15 @@
     "year": 2014
   },
   "high-potential": {
-    "imdb_id": "tt5347122",
+    "imdb_id": "tt22091076",
     "title": "High Potential",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "high-tides": {
+    "imdb_id": "tt21093806",
     "title": "High Tides",
-    "type": "movie",
+    "type": "tv",
     "year": 2023
   },
   "him-2025": {
@@ -290,8 +304,9 @@
     "year": 2026
   },
   "imperfect-women": {
+    "imdb_id": "tt31937954",
     "title": "Imperfect Women",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "inside-out": {
@@ -307,9 +322,9 @@
     "year": 2024
   },
   "invincible-2021": {
-    "imdb_id": "tt14849458",
+    "imdb_id": "tt6741278",
     "title": "INVINCIBLE",
-    "type": "movie",
+    "type": "tv",
     "year": 2021
   },
   "it-ends-with-us": {
@@ -355,19 +370,21 @@
     "year": 2005
   },
   "malcolm-in-the-middle-lifes-still-unfair": {
+    "imdb_id": "tt35466672",
     "title": "Malcolm in the Middle: Life's Still Unfair",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "man-on-fire-2026": {
-    "imdb_id": "tt0328107",
+    "imdb_id": "tt27331527",
     "title": "Man on Fire",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "margos-got-money-troubles": {
+    "imdb_id": "tt31137273",
     "title": "Margo's Got Money Troubles",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "masha-and-the-bear": {
@@ -387,8 +404,9 @@
     "year": 2015
   },
   "monarch-legacy-of-monsters": {
+    "imdb_id": "tt17220216",
     "title": "Monarch: Legacy of Monsters",
-    "type": "movie",
+    "type": "tv",
     "year": 2023
   },
   "my-favorite-wedding": {
@@ -468,45 +486,51 @@
     "year": 2025
   },
   "rooster": {
+    "imdb_id": "tt32420734",
     "title": "Rooster",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "running-point": {
+    "imdb_id": "tt14879018",
     "title": "Running Point",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "salish-jordan-matter": {
+    "imdb_id": "tt41672842",
     "title": "Salish & Jordan Matter",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "school-spirits-2023": {
-    "imdb_id": "tt5518168",
+    "imdb_id": "tt21057450",
     "title": "School Spirits",
-    "type": "movie",
+    "type": "tv",
     "year": 2023
   },
   "secrets-of-the-bees": {
+    "imdb_id": "tt26351133",
     "title": "Secrets of the Bees",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "should-i-marry-a-murderer": {
     "imdb_id": "tt41082351",
     "title": "Should I Marry A Murderer?",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "shrinking": {
+    "imdb_id": "tt15677150",
     "title": "Shrinking",
-    "type": "movie",
+    "type": "tv",
     "year": 2023
   },
   "slow-horses": {
+    "imdb_id": "tt5875444",
     "title": "Slow Horses",
-    "type": "movie",
+    "type": "tv",
     "year": 2022
   },
   "snake-eyes-gi-joe-origins": {
@@ -522,13 +546,15 @@
     "year": 1999
   },
   "star-wars-maul-shadow-lord": {
+    "imdb_id": "tt36594331",
     "title": "Star Wars: Maul - Shadow Lord",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "star-wars-the-mandalorian-and-grogu-a-special-look-2026": {
+    "imdb_id": "tt42369871",
     "title": "Star Wars: The Mandalorian and Grogu | A Special Look",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "stolen-girl": {
@@ -550,25 +576,27 @@
     "year": 2026
   },
   "ted-2024": {
-    "imdb_id": "tt1637725",
+    "imdb_id": "tt14824792",
     "title": "ted",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "ted-lasso": {
+    "imdb_id": "tt10986410",
     "title": "Ted Lasso",
-    "type": "movie",
+    "type": "tv",
     "year": 2020
   },
   "temptation-island-bnl": {
+    "imdb_id": "tt0313135",
     "title": "Temptation Island BNL",
-    "type": "movie",
+    "type": "tv",
     "year": null
   },
   "the-boys-2019": {
-    "imdb_id": "tt0926380",
+    "imdb_id": "tt1190634",
     "title": "The Boys",
-    "type": "movie",
+    "type": "tv",
     "year": 2019
   },
   "the-commandants-shadow": {
@@ -578,9 +606,9 @@
     "year": 2024
   },
   "the-dark-wizard": {
-    "imdb_id": "tt32293158",
+    "imdb_id": "tt39656291",
     "title": "The Dark Wizard",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "the-devil-wears-prada": {
@@ -602,14 +630,15 @@
     "year": 2025
   },
   "the-grand-ish-tour": {
+    "imdb_id": "tt42206913",
     "title": "The Grand-ish Tour",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "the-handmaids-tale": {
-    "imdb_id": "tt0099731",
+    "imdb_id": "tt5834204",
     "title": "The Handmaid's Tale",
-    "type": "movie",
+    "type": "tv",
     "year": 2017
   },
   "the-instigators": {
@@ -637,9 +666,9 @@
     "year": 2025
   },
   "the-madison": {
-    "imdb_id": "tt0112579",
+    "imdb_id": "tt33204276",
     "title": "The Madison",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "the-mummy-tomb-of-the-dragon-emperor": {
@@ -649,9 +678,9 @@
     "year": 2008
   },
   "the-pitt": {
-    "imdb_id": "tt33512868",
+    "imdb_id": "tt31938062",
     "title": "The Pitt",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "the-running-man-2025": {
@@ -667,20 +696,21 @@
     "year": 2025
   },
   "the-staircase-2022": {
+    "imdb_id": "tt11324406",
     "title": "The Staircase",
-    "type": "movie",
+    "type": "tv",
     "year": 2022
   },
   "the-summer-i-turned-pretty": {
-    "imdb_id": "tt38353629",
+    "imdb_id": "tt14016500",
     "title": "The Summer I Turned Pretty",
-    "type": "movie",
+    "type": "tv",
     "year": 2022
   },
   "the-testaments": {
-    "imdb_id": "tt0258247",
+    "imdb_id": "tt10970762",
     "title": "The Testaments",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "the-tuxedo": {
@@ -708,14 +738,15 @@
     "year": 2022
   },
   "unchosen": {
-    "imdb_id": "tt15514282",
+    "imdb_id": "tt31631142",
     "title": "Unchosen",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "under-salt-marsh": {
+    "imdb_id": "tt33741848",
     "title": "Under Salt Marsh",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "up": {
@@ -731,19 +762,21 @@
     "year": 2026
   },
   "veronika-2024": {
-    "imdb_id": "tt0176286",
+    "imdb_id": "tt24022296",
     "title": "Veronika",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "widows-bay": {
+    "imdb_id": "tt33332385",
     "title": "Widow's Bay",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "worst-ex-ever": {
+    "imdb_id": "tt32932523",
     "title": "Worst Ex Ever",
-    "type": "movie",
+    "type": "tv",
     "year": 2024
   },
   "wuthering-heights-2026": {
@@ -753,20 +786,21 @@
     "year": 2026
   },
   "y-marshals": {
+    "imdb_id": "tt36849871",
     "title": "Y: Marshals",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "young-sherlock": {
-    "imdb_id": "tt0090357",
+    "imdb_id": "tt8599532",
     "title": "Young Sherlock",
-    "type": "movie",
+    "type": "tv",
     "year": 2026
   },
   "your-friends-neighbors-2025": {
-    "imdb_id": "tt0119517",
+    "imdb_id": "tt30459041",
     "title": "Your Friends & Neighbors",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   },
   "zootopia-2": {
