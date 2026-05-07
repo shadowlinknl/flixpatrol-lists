@@ -1,0 +1,22 @@
+# FlixPatrol pages to scrape — one per line.
+#
+# Format:
+#   name=URL    (recommended; "name" becomes the output filename prefix)
+#   URL         (a name will be derived from the URL path)
+#
+# Lines starting with # are ignored.
+# URLs must be FlixPatrol Top 10 pages, i.e. of the form:
+#   https://flixpatrol.com/top10/<platform>/<country>/
+#
+# Examples below cover the Netherlands. Add, remove, or comment out lines as
+# you like — the GitHub Action will pick up the new config on the next run.
+
+netflix     = https://flixpatrol.com/top10/netflix/netherlands/
+disney      = https://flixpatrol.com/top10/disney/netherlands/
+hbo         = https://flixpatrol.com/top10/hbo/netherlands/
+prime-video = https://flixpatrol.com/top10/amazon-prime/netherlands/
+apple-tv    = https://flixpatrol.com/top10/apple-tv/netherlands/
+
+# Want a second country? Just add more lines, e.g.:
+# netflix-be  = https://flixpatrol.com/top10/netflix/belgium/
+# netflix-de  = https://flixpatrol.com/top10/netflix/germany/
