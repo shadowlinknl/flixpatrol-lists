@@ -39,17 +39,24 @@ PAGES_FILE = "pages.txt"
 
 # Sections to scrape from each FlixPatrol page.
 # Mapping: section header on page -> output filename suffix + default media type
+#
+# Most pages split their Top 10 into Movies/TV/Kids. Some (e.g. Videoland)
+# have a single combined "TOP 10 Overall" section. For those we default to
+# "tv" because that's what Videoland actually contains; if you add a
+# different platform with "TOP 10 Overall" that mixes types, change this
+# default or split the output into per-type files.
 SECTIONS: dict[str, tuple[str, str]] = {
     "TOP 10 Movies":        ("movies",     "movie"),
     "TOP 10 TV Shows":      ("tv",         "tv"),
     "TOP 10 Kids Movies":   ("kids-movies", "movie"),
     "TOP 10 Kids TV Shows": ("kids-tv",    "tv"),
+    "TOP 10 Overall":       ("overall",    "tv"),
 }
 
 # Limit to a subset of the sections above.
-# Set to `None` to scrape all four sections.
-# Set to e.g. {"TOP 10 TV Shows"} to scrape only adult TV series.
-SECTIONS_ENABLED: set[str] | None = {"TOP 10 TV Shows"}
+# Set to `None` to scrape all sections.
+# For TV-only across all FlixPatrol pages: keep both "TV Shows" and "Overall".
+SECTIONS_ENABLED: set[str] | None = {"TOP 10 TV Shows", "TOP 10 Overall"}
 
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
