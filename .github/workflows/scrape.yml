@@ -2,12 +2,11 @@ name: Update FlixPatrol lists
 
 on:
   schedule:
-    # Daily at 05:00 UTC. FlixPatrol's daily charts are usually fresh by then.
     - cron: "0 5 * * *"
-  workflow_dispatch:        # allow manual runs from the Actions tab
+  workflow_dispatch:
 
 permissions:
-  contents: write           # needed to commit generated files back
+  contents: write
 
 concurrency:
   group: scrape
@@ -34,6 +33,11 @@ jobs:
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: python scraper.py
+
+      - name: Sync to mdblist
+        env:
+          MDBLIST_API_KEY: ${{ secrets.MDBLIST_API_KEY }}
+        run: python push_to_mdblist.py
 
       - name: Commit & push if changed
         run: |
