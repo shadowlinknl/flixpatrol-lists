@@ -73,6 +73,12 @@
     "type": "movie",
     "year": 2014
   },
+  "brooklyn-nine-nine": {
+    "imdb_id": "tt22267706",
+    "title": "Brooklyn Nine-Nine",
+    "type": "movie",
+    "year": 2013
+  },
   "buen-camino": {
     "imdb_id": "tt38350059",
     "title": "Buen Camino",
@@ -129,6 +135,17 @@
     "type": "movie",
     "year": 2024
   },
+  "dood-spoor": {
+    "title": "Dood Spoor",
+    "type": "movie",
+    "year": 2025
+  },
+  "downton-abbey-the-grand-finale": {
+    "imdb_id": "tt31888477",
+    "title": "Downton Abbey: The Grand Finale",
+    "type": "movie",
+    "year": 2025
+  },
   "dr-seusss-horton": {
     "imdb_id": "tt0451079",
     "title": "Dr. Seuss's Horton!",
@@ -139,6 +156,12 @@
     "title": "Echte Reizigersvrouwen",
     "type": "movie",
     "year": 2026
+  },
+  "eddington": {
+    "imdb_id": "tt31176520",
+    "title": "Eddington",
+    "type": "movie",
+    "year": 2025
   },
   "euphoria": {
     "imdb_id": "tt5698320",
@@ -157,6 +180,11 @@
     "title": "Fallout",
     "type": "movie",
     "year": 2024
+  },
+  "fbi-most-wanted": {
+    "title": "FBI: Most Wanted",
+    "type": "movie",
+    "year": 2020
   },
   "finch": {
     "imdb_id": "tt3420504",
@@ -204,6 +232,11 @@
     "type": "movie",
     "year": 2011
   },
+  "gomorrah-the-origins": {
+    "title": "Gomorrah: The Origins",
+    "type": "movie",
+    "year": 2026
+  },
   "greyhound": {
     "imdb_id": "tt6048922",
     "title": "Greyhound",
@@ -243,6 +276,12 @@
     "title": "High Tides",
     "type": "movie",
     "year": 2023
+  },
+  "him-2025": {
+    "imdb_id": "tt20990442",
+    "title": "HIM",
+    "type": "movie",
+    "year": 2025
   },
   "hond-ik": {
     "imdb_id": "tt37205398",
@@ -364,6 +403,12 @@
     "type": "movie",
     "year": 2023
   },
+  "nobody-2": {
+    "imdb_id": "tt28996126",
+    "title": "Nobody 2",
+    "type": "movie",
+    "year": 2025
+  },
   "now-you-see-me-now-you-dont": {
     "imdb_id": "tt4712810",
     "title": "Now You See Me: Now You Don't",
@@ -416,6 +461,12 @@
     "type": "movie",
     "year": 2024
   },
+  "regretting-you": {
+    "imdb_id": "tt33088452",
+    "title": "Regretting You",
+    "type": "movie",
+    "year": 2025
+  },
   "rooster": {
     "title": "Rooster",
     "type": "movie",
@@ -430,6 +481,12 @@
     "title": "Salish & Jordan Matter",
     "type": "movie",
     "year": 2026
+  },
+  "school-spirits-2023": {
+    "imdb_id": "tt5518168",
+    "title": "School Spirits",
+    "type": "movie",
+    "year": 2023
   },
   "secrets-of-the-bees": {
     "title": "Secrets of the Bees",
@@ -451,6 +508,12 @@
     "title": "Slow Horses",
     "type": "movie",
     "year": 2022
+  },
+  "snake-eyes-gi-joe-origins": {
+    "imdb_id": "tt8404256",
+    "title": "Snake Eyes: G.I. Joe Origins",
+    "type": "movie",
+    "year": 2021
   },
   "star-wars-episode-i-the-phantom-menace": {
     "imdb_id": "tt0120915",
@@ -486,6 +549,12 @@
     "type": "movie",
     "year": 2026
   },
+  "ted-2024": {
+    "imdb_id": "tt1637725",
+    "title": "ted",
+    "type": "movie",
+    "year": 2024
+  },
   "ted-lasso": {
     "title": "Ted Lasso",
     "type": "movie",
@@ -519,6 +588,12 @@
     "title": "The Devil Wears Prada",
     "type": "movie",
     "year": 2006
+  },
+  "the-dictator": {
+    "imdb_id": "tt1645170",
+    "title": "The Dictator",
+    "type": "movie",
+    "year": 2012
   },
   "the-gorge": {
     "imdb_id": "tt13654226",
@@ -561,6 +636,18 @@
     "type": "movie",
     "year": 2025
   },
+  "the-madison": {
+    "imdb_id": "tt0112579",
+    "title": "The Madison",
+    "type": "movie",
+    "year": 2026
+  },
+  "the-mummy-tomb-of-the-dragon-emperor": {
+    "imdb_id": "tt0859163",
+    "title": "The Mummy: Tomb of the Dragon Emperor",
+    "type": "movie",
+    "year": 2008
+  },
   "the-pitt": {
     "imdb_id": "tt33512868",
     "title": "The Pitt",
@@ -570,6 +657,12 @@
   "the-running-man-2025": {
     "imdb_id": "tt14107334",
     "title": "The Running Man",
+    "type": "movie",
+    "year": 2025
+  },
+  "the-salt-path-scandal": {
+    "imdb_id": "tt39307042",
+    "title": "The Salt Path Scandal",
     "type": "movie",
     "year": 2025
   },
@@ -589,6 +682,12 @@
     "title": "The Testaments",
     "type": "movie",
     "year": 2026
+  },
+  "the-tuxedo": {
+    "imdb_id": "tt0290095",
+    "title": "The Tuxedo",
+    "type": "movie",
+    "year": 2002
   },
   "the-wild-robot": {
     "imdb_id": "tt29623480",
@@ -614,6 +713,11 @@
     "type": "movie",
     "year": 2026
   },
+  "under-salt-marsh": {
+    "title": "Under Salt Marsh",
+    "type": "movie",
+    "year": 2026
+  },
   "up": {
     "imdb_id": "tt1049413",
     "title": "Up",
@@ -625,6 +729,12 @@
     "title": "Vengeance",
     "type": "movie",
     "year": 2026
+  },
+  "veronika-2024": {
+    "imdb_id": "tt0176286",
+    "title": "Veronika",
+    "type": "movie",
+    "year": 2024
   },
   "widows-bay": {
     "title": "Widow's Bay",
@@ -639,6 +749,11 @@
   "wuthering-heights-2026": {
     "imdb_id": "tt32897959",
     "title": "Wuthering Heights",
+    "type": "movie",
+    "year": 2026
+  },
+  "y-marshals": {
+    "title": "Y: Marshals",
     "type": "movie",
     "year": 2026
   },
