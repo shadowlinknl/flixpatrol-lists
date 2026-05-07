@@ -13,7 +13,7 @@
 
 netflix     = https://flixpatrol.com/top10/netflix/netherlands/
 disney      = https://flixpatrol.com/top10/disney/netherlands/
-hbo         = https://flixpatrol.com/top10/hbo/netherlands/
+hbo         = https://flixpatrol.com/top10/hbo-max/netherlands/
 prime-video = https://flixpatrol.com/top10/amazon-prime/netherlands/
 apple-tv    = https://flixpatrol.com/top10/apple-tv/netherlands/
 
