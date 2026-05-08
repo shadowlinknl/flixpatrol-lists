@@ -124,6 +124,12 @@
     "type": "tv",
     "year": 2024
   },
+  "daar-gaan-ze-weer": {
+    "title": "Daar Gaan Ze Weer",
+    "tmdb_id": 250889,
+    "type": "tv",
+    "year": 2024
+  },
   "daredevil-born-again": {
     "imdb_id": "tt18923754",
     "title": "Daredevil: Born Again",
@@ -515,6 +521,13 @@
     "type": "tv",
     "year": 2006
   },
+  "prisoner-2026": {
+    "imdb_id": "tt34273502",
+    "title": "Prisoner",
+    "tmdb_id": 311858,
+    "type": "tv",
+    "year": 2026
+  },
   "queer": {
     "imdb_id": "tt24176060",
     "title": "Queer",
@@ -560,6 +573,13 @@
   "secrets-of-the-bees": {
     "imdb_id": "tt26351133",
     "title": "Secrets of the Bees",
+    "type": "tv",
+    "year": 2026
+  },
+  "send-help": {
+    "imdb_id": "tt16287610",
+    "title": "Send Help",
+    "tmdb_id": 212076,
     "type": "tv",
     "year": 2026
   },
@@ -862,6 +882,13 @@
     "title": "Your Friends & Neighbors",
     "type": "tv",
     "year": 2025
+  },
+  "zeeman-confronteert-stalkers": {
+    "imdb_id": "tt39219405",
+    "title": "Zeeman Confronteert: Stalkers",
+    "tmdb_id": 124272,
+    "type": "tv",
+    "year": 2020
   },
   "zootopia-2": {
     "imdb_id": "tt26443597",
