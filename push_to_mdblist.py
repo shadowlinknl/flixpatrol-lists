@@ -77,37 +77,59 @@ def load_targets() -> list[tuple[str, str]]:
     return out
 
 
-# --- IMDb -> media type lookup --------------------------------------------
+# --- ID -> media type lookup ----------------------------------------------
 
 def build_type_index(cache: dict) -> dict[str, str]:
-    """imdb_id -> 'movie' or 'tv', built from cache.json entries."""
+    """
+    canonical_key -> 'movie' or 'tv'.
+
+    Canonical keys are either an IMDb ID ("ttXXXX") or a TMDb fallback key
+    ("tmdb:NNN"). Both forms are emitted to lists/<name>.txt by scraper.py
+    when the corresponding cache entry has an imdb_id and/or tmdb_id.
+    """
     idx: dict[str, str] = {}
     for entry in cache.values():
-        imdb_id = entry.get("imdb_id")
         media_type = entry.get("type")
-        if imdb_id and media_type in ("movie", "tv"):
-            idx[imdb_id] = media_type
+        if media_type not in ("movie", "tv"):
+            continue
+        if entry.get("imdb_id"):
+            idx[entry["imdb_id"]] = media_type
+        if entry.get("tmdb_id") is not None:
+            idx[f"tmdb:{entry['tmdb_id']}"] = media_type
     return idx
 
 
-def split_by_type(imdb_ids: Iterable[str], type_index: dict[str, str]) -> dict[str, list[dict]]:
-    """Group IMDb IDs into mdblist's expected {'movies': [...], 'shows': [...]} shape."""
+def _key_to_payload_entry(key: str) -> Optional[dict]:
+    """'ttXXXX' -> {'imdb': 'ttXXXX'}; 'tmdb:NNN' -> {'tmdb': NNN}."""
+    if key.startswith("tt"):
+        return {"imdb": key}
+    if key.startswith("tmdb:"):
+        try:
+            return {"tmdb": int(key.split(":", 1)[1])}
+        except ValueError:
+            return None
+    return None
+
+
+def split_by_type(keys: Iterable[str], type_index: dict[str, str]) -> dict[str, list[dict]]:
+    """Group canonical keys into mdblist's {'movies': [...], 'shows': [...]} shape."""
     movies: list[dict] = []
     shows: list[dict] = []
     unknown: list[str] = []
-    for imdb_id in imdb_ids:
-        media_type = type_index.get(imdb_id)
+    for key in keys:
+        entry_dict = _key_to_payload_entry(key)
+        if entry_dict is None:
+            continue
+        media_type = type_index.get(key)
         if media_type == "movie":
-            movies.append({"imdb": imdb_id})
+            movies.append(entry_dict)
         elif media_type == "tv":
-            shows.append({"imdb": imdb_id})
+            shows.append(entry_dict)
         else:
-            # If we don't know the type, default to movie. mdblist will return
-            # not_found for the wrong bucket, and we'll surface a warning.
-            unknown.append(imdb_id)
-            movies.append({"imdb": imdb_id})
+            unknown.append(key)
+            movies.append(entry_dict)
     if unknown:
-        print(f"    NOTE: {len(unknown)} IMDb ID(s) had no cached type, sent as movies",
+        print(f"    NOTE: {len(unknown)} item(s) had no cached type, sent as movies",
               file=sys.stderr)
     return {"movies": movies, "shows": shows}
 
@@ -157,8 +179,13 @@ def resolve_list_id(list_ref: str) -> Optional[str]:
     return None
 
 
-def get_existing_imdb_ids(list_id: str) -> Optional[set[str]]:
-    """Fetch all IMDb IDs currently in the mdblist list (numeric ID only)."""
+def get_existing_keys(list_id: str) -> Optional[set[str]]:
+    """
+    Fetch the items currently in an mdblist list and return them as a set of
+    canonical keys: 'ttXXXX' when the item has an IMDb ID, otherwise
+    'tmdb:NNN'. Lets us diff against the local file regardless of which ID
+    type was used to add the item.
+    """
     url = f"{MDBLIST_BASE}/lists/{list_id}/items"
     try:
         r = session.get(url, params={"apikey": MDBLIST_API_KEY, "limit": 1000},
@@ -169,19 +196,28 @@ def get_existing_imdb_ids(list_id: str) -> Optional[set[str]]:
         print(f"    ERROR reading mdblist list {list_id}: {exc}", file=sys.stderr)
         return None
 
-    ids: set[str] = set()
+    def _canonical(item: dict) -> Optional[str]:
+        imdb = item.get("imdb_id") or item.get("imdb")
+        if imdb:
+            return imdb
+        tmdb = item.get("tmdb_id") or item.get("tmdb") or item.get("id")
+        if tmdb is not None:
+            return f"tmdb:{tmdb}"
+        return None
+
+    keys: set[str] = set()
     if isinstance(data, dict):
-        for key in ("movies", "shows"):
-            for item in data.get(key) or []:
-                imdb = item.get("imdb_id") or item.get("imdb")
-                if imdb:
-                    ids.add(imdb)
+        for section in ("movies", "shows"):
+            for item in data.get(section) or []:
+                k = _canonical(item)
+                if k:
+                    keys.add(k)
     elif isinstance(data, list):
         for item in data:
-            imdb = item.get("imdb_id") or item.get("imdb")
-            if imdb:
-                ids.add(imdb)
-    return ids
+            k = _canonical(item)
+            if k:
+                keys.add(k)
+    return keys
 
 
 def modify_items(list_id: str, action: str, payload: dict) -> Optional[dict]:
@@ -212,26 +248,27 @@ def sync_one(local_name: str, list_ref: str, type_index: dict[str, str]) -> bool
         print(f"  SKIP {local_name}: lists/{local_name}.txt not found", file=sys.stderr)
         return False
 
-    desired_ids = {
-        line.strip()
-        for line in local_file.read_text(encoding="utf-8").splitlines()
-        if line.strip().startswith("tt")
-    }
-    if not desired_ids:
-        print(f"  SKIP {local_name}: lists/{local_name}.txt has no IMDb IDs", file=sys.stderr)
+    desired_keys: set[str] = set()
+    for line in local_file.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("tt") or line.startswith("tmdb:"):
+            desired_keys.add(line)
+    if not desired_keys:
+        print(f"  SKIP {local_name}: lists/{local_name}.txt has no usable IDs",
+              file=sys.stderr)
         return False
 
     list_id = resolve_list_id(list_ref)
     if not list_id:
         return False
 
-    existing_ids = get_existing_imdb_ids(list_id)
-    if existing_ids is None:
+    existing_keys = get_existing_keys(list_id)
+    if existing_keys is None:
         return False
 
-    to_remove = sorted(existing_ids - desired_ids)
-    to_add = sorted(desired_ids - existing_ids)
-    unchanged = len(existing_ids & desired_ids)
+    to_remove = sorted(existing_keys - desired_keys)
+    to_add = sorted(desired_keys - existing_keys)
+    unchanged = len(existing_keys & desired_keys)
 
     label = list_ref if list_ref == list_id else f"{list_ref} (#{list_id})"
     print(f"  {local_name} -> {label}: "

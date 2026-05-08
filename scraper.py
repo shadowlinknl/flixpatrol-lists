@@ -182,10 +182,14 @@ def parse_title_page(page_html: str) -> tuple[Optional[int], Optional[str]]:
 
 # --- TMDb lookup -----------------------------------------------------------
 
-def tmdb_imdb_id(title: str, year: Optional[int], media_type: str) -> Optional[str]:
-    """Search TMDb by title (and year, if known) and return its IMDb ID."""
+def tmdb_lookup(title: str, year: Optional[int], media_type: str) -> tuple[Optional[str], Optional[int]]:
+    """
+    Search TMDb by title (and year, if known) and return (imdb_id, tmdb_id).
+    Either or both may be None. tmdb_id is useful as a fallback when the
+    title has no IMDb cross-reference (common for some non-English content).
+    """
     if not TMDB_API_KEY:
-        return None
+        return None, None
 
     is_movie = media_type == "movie"
     search_path = f"/search/{'movie' if is_movie else 'tv'}"
@@ -204,18 +208,20 @@ def tmdb_imdb_id(title: str, year: Optional[int], media_type: str) -> Optional[s
             r.raise_for_status()
             results = r.json().get("results", [])
         if not results:
-            return None
+            return None, None
 
         tmdb_id = results[0]["id"]
+        imdb_id = None
         if is_movie:
             details = _tmdb_get(f"/movie/{tmdb_id}").json()
-            return details.get("imdb_id") or None
+            imdb_id = details.get("imdb_id") or None
         else:
             ext = _tmdb_get(f"/tv/{tmdb_id}/external_ids").json()
-            return ext.get("imdb_id") or None
+            imdb_id = ext.get("imdb_id") or None
+        return imdb_id, tmdb_id
     except (requests.RequestException, ValueError, KeyError) as exc:
         print(f"    TMDb lookup error for {title!r}: {exc}", file=sys.stderr)
-        return None
+        return None, None
 
 
 # --- Pages config loader ---------------------------------------------------
@@ -367,21 +373,33 @@ def main() -> int:
                     cache[slug] = entry
                     save_cache(cache)
 
-                # Step 2: resolve IMDb ID if missing (retry every run until found)
-                if not entry.get("imdb_id"):
-                    imdb_id = tmdb_imdb_id(
+                # Step 2: resolve IDs if missing (retry every run until found).
+                # We store both imdb_id and tmdb_id; mdblist accepts either.
+                if not entry.get("imdb_id") and not entry.get("tmdb_id"):
+                    imdb_id, tmdb_id = tmdb_lookup(
                         entry.get("title", display_title),
                         entry.get("year"),
                         entry.get("type", default_type),
                     )
                     if imdb_id:
                         entry["imdb_id"] = imdb_id
+                    if tmdb_id:
+                        entry["tmdb_id"] = tmdb_id
+                    if imdb_id or tmdb_id:
                         cache[slug] = entry
                         save_cache(cache)
 
+                # Output line preference: IMDb when available, else "tmdb:NNN".
+                # This keeps lists/<name>.txt mostly compatible with the mdblist
+                # raw-URL import (which only knows IMDb), while still letting
+                # push_to_mdblist.py upload TMDb-only items via the API.
                 if entry.get("imdb_id"):
                     imdb_lines.append(entry["imdb_id"])
                     all_imdb.append(entry["imdb_id"])
+                elif entry.get("tmdb_id"):
+                    line = f"tmdb:{entry['tmdb_id']}"
+                    imdb_lines.append(line)
+                    all_imdb.append(line)
 
                 title_line = entry.get("title", display_title)
                 if entry.get("year"):
@@ -391,7 +409,7 @@ def main() -> int:
 
             write_lines(LISTS_DIR / f"{platform_key}-{suffix}.txt", imdb_lines)
             write_lines(LISTS_DIR / f"{platform_key}-{suffix}-titles.txt", title_lines)
-            print(f"  {section_label}: {len(imdb_lines)}/{len(items)} IMDb IDs resolved")
+            print(f"  {section_label}: {len(imdb_lines)}/{len(items)} items resolved")
 
         write_lines(LISTS_DIR / f"{platform_key}-all.txt", all_imdb)
         write_lines(LISTS_DIR / f"{platform_key}-all-titles.txt", all_titles)
