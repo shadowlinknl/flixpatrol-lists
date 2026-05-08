@@ -22,7 +22,7 @@ disney-tv       matthias.bentein/disney-top-10
 hbo-tv          matthias.bentein/hbo-max-top-10
 prime-video-tv  matthias.bentein/amazon-prime-top-10 
 apple-tv-tv     matthias.bentein/apple-tv-top-10
-videoland-tv    matthias.bentein/videoland-top-10
+videoland-overall    matthias.bentein/videoland-top-10
 skyshowtime-tv  matthias.bentein/skyshowtime-top-10
 
 # If you re-enable more sections in scraper.py, you can also map:
