@@ -17,12 +17,13 @@
 
 # With SECTIONS_ENABLED = {"TOP 10 TV Shows"} in scraper.py, only the
 # <platform>-tv.txt files exist. Map them like this:
-# netflix-tv      matthias.bentein/netflix-top-10
-# disney-tv       matthias.bentein/disney-top-10
-# hbo-tv          matthias.bentein/hbo-top-10
-# prime-video-tv  matthias.bentein/prime-top-10 
+netflix-tv      matthias.bentein/netflix-top-10
+disney-tv       matthias.bentein/disney-top-10
+hbo-tv          matthias.bentein/hbo-max-top-10
+prime-video-tv  matthias.bentein/amazon-prime-top-10 
 apple-tv-tv     matthias.bentein/apple-tv-top-10
-# videoland-tv    matthias.bentein/videoland-top-10
+videoland-tv    matthias.bentein/videoland-top-10
+skyshowtime-tv  matthias.bentein/skyshowtime-top-10
 
 # If you re-enable more sections in scraper.py, you can also map:
 # <platform>-movies, <platform>-kids-movies, <platform>-kids-tv,
