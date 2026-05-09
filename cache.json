@@ -388,6 +388,13 @@
     "type": "tv",
     "year": 2017
   },
+  "legends-2026": {
+    "imdb_id": "tt33265765",
+    "title": "Legends",
+    "tmdb_id": 262280,
+    "type": "tv",
+    "year": 2026
+  },
   "lost-transport": {
     "imdb_id": "tt14852188",
     "title": "Lost Transport",
@@ -672,6 +679,13 @@
     "title": "The Boys",
     "type": "tv",
     "year": 2019
+  },
+  "the-chestnut-man": {
+    "imdb_id": "tt10834220",
+    "title": "The Chestnut Man",
+    "tmdb_id": 127865,
+    "type": "tv",
+    "year": 2021
   },
   "the-commandants-shadow": {
     "imdb_id": "tt32020404",
