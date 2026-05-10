@@ -208,6 +208,13 @@
     "type": "tv",
     "year": 2020
   },
+  "fboy-island": {
+    "imdb_id": "tt14825858",
+    "title": "FBoy Island",
+    "tmdb_id": 129481,
+    "type": "tv",
+    "year": 2021
+  },
   "finch": {
     "imdb_id": "tt3420504",
     "title": "Finch",
@@ -285,6 +292,13 @@
     "title": "Hacks",
     "type": "tv",
     "year": 2021
+  },
+  "half-man": {
+    "imdb_id": "tt32767294",
+    "title": "Half Man",
+    "tmdb_id": 257994,
+    "type": "tv",
+    "year": 2026
   },
   "heels-in-the-hay": {
     "imdb_id": "tt36220598",
@@ -453,6 +467,11 @@
     "type": "movie",
     "year": 2004
   },
+  "mike-nick-nick-alice": {
+    "title": "Mike & Nick & Nick & Alice",
+    "type": "tv",
+    "year": 2026
+  },
   "minions": {
     "imdb_id": "tt2293640",
     "title": "Minions",
@@ -470,6 +489,13 @@
     "title": "My Favorite Wedding",
     "type": "movie",
     "year": 2017
+  },
+  "my-royal-nemesis": {
+    "imdb_id": "tt38828946",
+    "title": "My Royal Nemesis",
+    "tmdb_id": 303143,
+    "type": "tv",
+    "year": 2026
   },
   "napoleon-2023": {
     "imdb_id": "tt13287846",
@@ -577,6 +603,13 @@
     "type": "tv",
     "year": 2023
   },
+  "scrubs-2026": {
+    "imdb_id": "tt40197357",
+    "title": "Scrubs",
+    "tmdb_id": 295778,
+    "type": "tv",
+    "year": 2026
+  },
   "secrets-of-the-bees": {
     "imdb_id": "tt26351133",
     "title": "Secrets of the Bees",
@@ -623,6 +656,13 @@
   "star-wars-maul-shadow-lord": {
     "imdb_id": "tt36594331",
     "title": "Star Wars: Maul - Shadow Lord",
+    "type": "tv",
+    "year": 2026
+  },
+  "star-wars-the-mandalorian-and-grogu-a-special-look": {
+    "imdb_id": "tt42369871",
+    "title": "Star Wars: The Mandalorian and Grogu | A Special Look",
+    "tmdb_id": 321564,
     "type": "tv",
     "year": 2026
   },
@@ -813,6 +853,13 @@
     "type": "movie",
     "year": 2002
   },
+  "the-voice-of-holland": {
+    "imdb_id": "tt2419212",
+    "title": "The Voice of Holland",
+    "tmdb_id": 37734,
+    "type": "tv",
+    "year": 2010
+  },
   "the-wild-robot": {
     "imdb_id": "tt29623480",
     "title": "The Wild Robot",
@@ -834,6 +881,13 @@
   "unchosen": {
     "imdb_id": "tt31631142",
     "title": "Unchosen",
+    "type": "tv",
+    "year": 2026
+  },
+  "unconditional-2026": {
+    "imdb_id": "tt35668813",
+    "title": "Unconditional",
+    "tmdb_id": 314916,
     "type": "tv",
     "year": 2026
   },
@@ -905,9 +959,8 @@
     "year": 2020
   },
   "zootopia-2": {
-    "imdb_id": "tt26443597",
     "title": "Zootopia 2",
-    "type": "movie",
+    "type": "tv",
     "year": 2025
   }
 }
