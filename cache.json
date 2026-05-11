@@ -708,6 +708,13 @@
     "type": "tv",
     "year": null
   },
+  "thank-you-next": {
+    "imdb_id": "tt28267514",
+    "title": "Thank You, Next",
+    "tmdb_id": 251883,
+    "type": "tv",
+    "year": 2024
+  },
   "the-bold-and-the-beautiful": {
     "imdb_id": "tt0092325",
     "title": "The Bold and the Beautiful",
@@ -932,6 +939,13 @@
     "title": "Wuthering Heights",
     "type": "movie",
     "year": 2026
+  },
+  "wwe-smackdown": {
+    "imdb_id": "tt0227972",
+    "title": "WWE SmackDown",
+    "tmdb_id": 1549,
+    "type": "tv",
+    "year": 1999
   },
   "y-marshals": {
     "imdb_id": "tt36849871",
