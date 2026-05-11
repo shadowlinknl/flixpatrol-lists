@@ -221,6 +221,12 @@
     "type": "movie",
     "year": 2021
   },
+  "football-island": {
+    "title": "Football Island",
+    "tmdb_id": 313199,
+    "type": "tv",
+    "year": 2026
+  },
   "for-all-mankind-2019": {
     "imdb_id": "tt7772588",
     "title": "For All Mankind",
@@ -527,6 +533,13 @@
     "type": "movie",
     "year": 2026
   },
+  "paradise-2025": {
+    "imdb_id": "tt27444205",
+    "title": "Paradise",
+    "tmdb_id": 245927,
+    "type": "tv",
+    "year": 2025
+  },
   "paw-patrol": {
     "title": "Paw Patrol",
     "type": "movie",
@@ -702,6 +715,13 @@
     "type": "tv",
     "year": 2020
   },
+  "temptation-island": {
+    "imdb_id": "tt8694398",
+    "title": "Temptation Island",
+    "tmdb_id": 85904,
+    "type": "tv",
+    "year": 2019
+  },
   "temptation-island-bnl": {
     "imdb_id": "tt0313135",
     "title": "Temptation Island BNL",
@@ -775,6 +795,12 @@
     "title": "The Handmaid's Tale",
     "type": "tv",
     "year": 2017
+  },
+  "the-house-of-hide-seek": {
+    "title": "The House of Hide & Seek",
+    "tmdb_id": 308131,
+    "type": "tv",
+    "year": 2026
   },
   "the-instigators": {
     "imdb_id": "tt24169886",
