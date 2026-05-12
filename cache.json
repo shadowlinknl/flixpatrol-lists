@@ -408,6 +408,13 @@
     "type": "tv",
     "year": 2017
   },
+  "last-week-tonight-with-john-oliver": {
+    "imdb_id": "tt3530232",
+    "title": "Last Week Tonight with John Oliver",
+    "tmdb_id": 60694,
+    "type": "tv",
+    "year": 2014
+  },
   "legends-2026": {
     "imdb_id": "tt33265765",
     "title": "Legends",
@@ -832,6 +839,13 @@
     "type": "tv",
     "year": 2026
   },
+  "the-mandalorian": {
+    "imdb_id": "tt8111088",
+    "title": "The Mandalorian",
+    "tmdb_id": 82856,
+    "type": "tv",
+    "year": 2019
+  },
   "the-mummy-tomb-of-the-dragon-emperor": {
     "imdb_id": "tt0859163",
     "title": "The Mummy: Tomb of the Dragon Emperor",
@@ -849,6 +863,11 @@
     "title": "The Real Housewives van het Zuiden",
     "type": "tv",
     "year": 2025
+  },
+  "the-roast-of-kevin-hart": {
+    "title": "The Roast of Kevin Hart",
+    "type": "tv",
+    "year": 2026
   },
   "the-running-man-2025": {
     "imdb_id": "tt14107334",
