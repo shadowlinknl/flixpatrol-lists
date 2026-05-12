@@ -2,7 +2,7 @@ name: Update FlixPatrol lists
 
 on:
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "0 14 * * *"
   workflow_dispatch:
 
 permissions:
