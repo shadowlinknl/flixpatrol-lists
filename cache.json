@@ -422,6 +422,12 @@
     "type": "tv",
     "year": 2026
   },
+  "lil-kleine-geen-rem": {
+    "title": "Lil Kleine: Geen Rem",
+    "tmdb_id": 301461,
+    "type": "tv",
+    "year": 2025
+  },
   "lost-transport": {
     "imdb_id": "tt14852188",
     "title": "Lost Transport",
@@ -580,6 +586,13 @@
     "tmdb_id": 311858,
     "type": "tv",
     "year": 2026
+  },
+  "prisoner-951": {
+    "imdb_id": "tt32750053",
+    "title": "Prisoner 951",
+    "tmdb_id": 306502,
+    "type": "tv",
+    "year": 2025
   },
   "queer": {
     "imdb_id": "tt24176060",
@@ -923,6 +936,20 @@
     "title": "The Zone of Interest",
     "type": "movie",
     "year": 2023
+  },
+  "trackers": {
+    "imdb_id": "tt9074360",
+    "title": "Trackers",
+    "tmdb_id": 94923,
+    "type": "tv",
+    "year": 2020
+  },
+  "tucci-in-italy": {
+    "imdb_id": "tt30443317",
+    "title": "Tucci in Italy",
+    "tmdb_id": 241569,
+    "type": "tv",
+    "year": 2025
   },
   "uncharted": {
     "imdb_id": "tt1464335",
