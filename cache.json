@@ -5,6 +5,13 @@
     "type": "tv",
     "year": 2025
   },
+  "90-day-diaries": {
+    "imdb_id": "tt13787288",
+    "title": "90 Day Diaries",
+    "tmdb_id": 114659,
+    "type": "tv",
+    "year": 2021
+  },
   "90-day-fiance-before-the-90-days-2017": {
     "imdb_id": "tt7252812",
     "title": "90 Day Fiancé: Before the 90 Days",
@@ -70,6 +77,13 @@
     "title": "Ben-Hur",
     "type": "movie",
     "year": 2016
+  },
+  "between-father-and-son-2026": {
+    "imdb_id": "tt42171045",
+    "title": "Between Father and Son",
+    "tmdb_id": 321338,
+    "type": "tv",
+    "year": 2026
   },
   "booba": {
     "imdb_id": "tt25262050",
@@ -280,6 +294,13 @@
     "title": "Gomorrah: The Origins",
     "type": "tv",
     "year": 2026
+  },
+  "good-omens": {
+    "imdb_id": "tt1869454",
+    "title": "Good Omens",
+    "tmdb_id": 71915,
+    "type": "tv",
+    "year": 2019
   },
   "greyhound": {
     "imdb_id": "tt6048922",
@@ -540,6 +561,13 @@
     "type": "movie",
     "year": 2018
   },
+  "off-campus": {
+    "imdb_id": "tt33546863",
+    "title": "Off Campus",
+    "tmdb_id": 273240,
+    "type": "tv",
+    "year": 2026
+  },
   "outcome": {
     "imdb_id": "tt23724682",
     "title": "Outcome",
@@ -618,6 +646,13 @@
     "title": "Rooster",
     "type": "tv",
     "year": 2026
+  },
+  "roosters": {
+    "imdb_id": "tt32307068",
+    "title": "Roosters",
+    "tmdb_id": 253736,
+    "type": "tv",
+    "year": 2025
   },
   "running-point": {
     "imdb_id": "tt14879018",
