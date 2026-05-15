@@ -24,6 +24,11 @@
     "type": "tv",
     "year": 2021
   },
+  "a-marvel-television-special-presentation-the-punisher-one-last-kill": {
+    "title": "A Marvel Television Special Presentation - The Punisher: One Last Kill",
+    "type": "tv",
+    "year": 2026
+  },
   "amsterdam-centraal-247-2025": {
     "imdb_id": "tt36873634",
     "title": "Amsterdam Centraal 24/7",
@@ -314,6 +319,11 @@
     "type": "movie",
     "year": 2017
   },
+  "guardians-of-the-galaxy-volume-3": {
+    "title": "Guardians of the Galaxy Volume 3",
+    "type": "tv",
+    "year": 2023
+  },
   "hacks": {
     "imdb_id": "tt11815682",
     "title": "Hacks",
@@ -542,6 +552,13 @@
     "title": "Napoleon",
     "type": "movie",
     "year": 2023
+  },
+  "nemesis-2026": {
+    "imdb_id": "tt36022742",
+    "title": "Nemesis",
+    "tmdb_id": 285807,
+    "type": "tv",
+    "year": 2026
   },
   "nobody-2": {
     "imdb_id": "tt28996126",
@@ -978,6 +995,13 @@
     "title": "The Zone of Interest",
     "type": "movie",
     "year": 2023
+  },
+  "toy-story": {
+    "imdb_id": "tt1716710",
+    "title": "Toy Story",
+    "tmdb_id": 39905,
+    "type": "tv",
+    "year": 1995
   },
   "trackers": {
     "imdb_id": "tt9074360",
