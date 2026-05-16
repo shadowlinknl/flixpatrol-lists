@@ -264,6 +264,12 @@
     "type": "movie",
     "year": 2021
   },
+  "gang-war-bandidos-2026": {
+    "title": "Gang War: Bandidos",
+    "tmdb_id": 321211,
+    "type": "tv",
+    "year": 2026
+  },
   "gary-2026": {
     "imdb_id": "tt39367461",
     "title": "Gary",
@@ -657,6 +663,13 @@
     "title": "Regretting You",
     "type": "movie",
     "year": 2025
+  },
+  "rivals-2024": {
+    "imdb_id": "tt21906238",
+    "title": "Rivals",
+    "tmdb_id": 208921,
+    "type": "tv",
+    "year": 2024
   },
   "rooster": {
     "imdb_id": "tt32420734",
